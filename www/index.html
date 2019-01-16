@@ -83,7 +83,10 @@
 
             $("#Image").attr('src', fileURL);
 
-            Crop.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: -1, targetHeight: -1 });
+            console.log("Image Captured");
+
+            navigator.crop.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: -1, targetHeight: -1 });
+
             // var uri = encodeURI(base_url + "upload_user");
             // var options = new FileUploadOptions();
             // options.fileKey = "file";
@@ -97,6 +100,7 @@
         }
 
         function onCropSuccess(data) {
+            console.log("Crop Success");
             console.log(data);
             $("#ImageCropped").attr('src', data);
         }
