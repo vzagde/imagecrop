@@ -48,7 +48,11 @@
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
+            <button id="clickSelectCamera" style="margin: 15px; padding: 10px; font-size: 10px; background: blue; color: #ffffff;">Select Camera</button>
+
             <button id="clickSelectImage" style="margin: 15px; padding: 10px; font-size: 10px; background: blue; color: #ffffff;">Select Image</button>
+
+            <br><br>
 
             <img src="" id="Image" style="width: 48%; float: left;">
 
@@ -61,17 +65,26 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
-        $("#clickSelectImage").click(function(){
+        $("#clickSelectCamera").click(function(){
             console.log("Select Image");
 
             navigator.camera.getPicture(onSuccess, onFail, {
                 quality: 100,
                 destinationType: Camera.DestinationType.FILE_URI,
                 sourceType: Camera.PictureSourceType.CAMERA,
-                targetWidth: 720,
-                targetHeight: 500,
                 correctOrientation: true,
                 allowEdit: true,
+            });
+        })
+
+        $("#clickSelectImage").click(function(){
+            console.log("Select Image");
+
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 100,
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                correctOrientation: true,
             });
         })
 
@@ -85,7 +98,7 @@
 
             console.log("Image Captured");
 
-            plugins.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: -1, targetHeight: -1 });
+            plugins.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: 720, targetHeight: 500 });
 
             // var uri = encodeURI(base_url + "upload_user");
             // var options = new FileUploadOptions();
