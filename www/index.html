@@ -85,7 +85,7 @@
 
             console.log("Image Captured");
 
-            crop.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: -1, targetHeight: -1 });
+            plugins.crop(onCropSuccess, onCropfail, fileURL, { quality: 100, targetWidth: -1, targetHeight: -1 });
 
             // var uri = encodeURI(base_url + "upload_user");
             // var options = new FileUploadOptions();
